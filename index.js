@@ -47,6 +47,28 @@ class ProfilePrictureTransformer {
 class UserNameTransformer{
   async element(element) {
     element.setInnerContent("Narendra Mohan M.");
+    element.setAttribute("class", "bg-teal-600");
+  }
+}
+
+class SocialLinkTransformer{
+  async element(element){
+    element.removeAttribute('style')
+    element.append(`<a href="https://www.facebook.com/narendra.mohanm.17" target="_blank"><img src=\"https://simpleicons.org/icons/facebook.svg"></a>`, { html: true });
+    element.append(`<a href="https://www.linkedin.com/in/narendramohanm/" target="_blank"><img src=\"https://simpleicons.org/icons/twitter.svg"></a>`, { html: true });
+    element.append(`<a href="https://www.instagram.com/mohan_narendra17/" target="_blank"><img src=\"https://simpleicons.org/icons/instagram.svg"></a>`, { html: true });
+  }
+}
+
+class TitleTransformer {
+  async element(element){
+    element.setInnerContent("Narendra Mohan M.")
+  }
+}
+
+class BGColorTransformer{
+  async element(element){
+    element.setAttribute("class", "bg-teal-600");
   }
 }
 
@@ -78,6 +100,9 @@ async function handleRequest(request) {
       .on("div#profile", new ProfileTransformer())
       .on("img#avatar", new ProfilePrictureTransformer())
       .on("h1#name", new UserNameTransformer())
+      .on("div#social", new SocialLinkTransformer())
+      .on("title", new TitleTransformer())
+      .on("body", new BGColorTransformer())
       .transform(htmlResponse)
   }
 
