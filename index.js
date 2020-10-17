@@ -26,7 +26,7 @@ class LinksTransformer {
   
   async element(element) {
     links.forEach(link => {
-      element.append(`<a href="${link.url}">${link.name}</a>`, { html: true });
+      element.append(`<a href="${link.url} target="_blank">${link.name}</a>`, { html: true });
     })
   }
 }
