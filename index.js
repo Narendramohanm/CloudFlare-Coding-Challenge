@@ -75,8 +75,9 @@ class BGColorTransformer{
 async function handleRequest(request) {
 
   const url = request.url
+  let lastPartURL = url.substr(url.lastIndexOf('/')+1)
 
-  if(url.indexOf("/links") != -1){
+  if(lastPartURL == "links"){
     const jsonData = JSON.stringify(links, null, 2)
 
     return new Response(jsonData, {
